@@ -1,12 +1,12 @@
 'use strict'
 var CLOUD_WIDTH = 400;
-var CLOUD_HEIGHT = 250;
+var CLOUD_HEIGHT = 350;
 var CLOUD_X = 100;
 var CLOUD_Y = 50;
 var TEXT_WIDTH = 20;
 var COLUMN_WIDTH = 20;
 var COLUMN_HEIGHT = 180;
-var GAP = 20;
+var GAP = 40;
 var FONT_GAP = 10;
 var maxTime;
 var timesOrder;
@@ -34,10 +34,10 @@ window.renderStatistics = function (ctx, names, times) {
   var drawColumns = function () {
     for(var j = 0; j < names.length; j++) {
       ctx.fillStyle = 'black';
-      ctx.fillText(names[j], CLOUD_X * j + CLOUD_X + 2 * GAP, CLOUD_Y + GAP + COLUMN_HEIGHT + 2 * FONT_GAP);
-      ctx.fillText(Math.floor(times[j]) / 1000  + ' сек', CLOUD_X * j + CLOUD_X + 2 * GAP, CLOUD_Y + GAP - FONT_GAP);
+      ctx.fillText(names[j], CLOUD_X * j + CLOUD_X + GAP, CLOUD_Y + GAP + COLUMN_HEIGHT + 2 * FONT_GAP);
+      ctx.fillText(Math.floor(times[j]) / 1000  + ' сек', CLOUD_X * j + CLOUD_X + GAP, CLOUD_Y + GAP - FONT_GAP);
       ctx.fillStyle = (names[j] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255,' + Math.random().toFixed(1) + ')';
-      ctx.fillRect(CLOUD_X * j + CLOUD_X +  2 * GAP, CLOUD_Y + GAP + COLUMN_HEIGHT, COLUMN_WIDTH, -(COLUMN_HEIGHT * times[j]/ maxTime));
+      ctx.fillRect(CLOUD_X * j + CLOUD_X +  GAP, CLOUD_Y + GAP + COLUMN_HEIGHT, COLUMN_WIDTH, -(COLUMN_HEIGHT * times[j]/ maxTime));
     }
   }
 
@@ -46,14 +46,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = "black";
   getMaxTime();
   drawColumns();
-
-
-
-
-
-
-
-  }
+}
 
 
 
