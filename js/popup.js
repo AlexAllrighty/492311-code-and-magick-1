@@ -1,15 +1,11 @@
 'use strict';
 
 (function () {
-  var popUp = document.querySelector('.setup');
+  window.popUp = document.querySelector('.setup');
   var showPopupButton = document.querySelector('.setup-open');
-  var hidePopupButton = popUp.querySelector('.setup-close');
+  var hidePopupButton = window.popUp.querySelector('.setup-close');
   var KEYCODE_ESC = 27;
   var KEYCODE_ENTER = 13;
-  var bigWizardEyes = document.querySelector('.setup-wizard').querySelector('.wizard-eyes');
-  var bigWizardCoat = document.querySelector('.setup-wizard').querySelector('.wizard-coat');
-  var bigWizardFireball = document.querySelector('.setup-fireball-wrap');
-  var bigWizardFireballColor = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
   var onPopupEscPress = function (evt) {
     if (evt.keyCode === KEYCODE_ESC) {
@@ -18,13 +14,13 @@
   };
 
   var openPopup = function () {
-    popUp.classList.remove('hidden');
+    window.popUp.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
 
 
   var closePopup = function () {
-    popUp.classList.add('hidden');
+    window.popUp.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -43,4 +39,5 @@
   hidePopupButton.addEventListener('keydown', function () {
     closePopup();
   });
-})()
+
+})();
