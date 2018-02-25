@@ -6,6 +6,7 @@
   var hidePopupButton = window.popUp.querySelector('.setup-close');
   var KEYCODE_ESC = 27;
   var KEYCODE_ENTER = 13;
+  var form = window.popUp.querySelector('.setup-wizard-form');
 
   var onPopupEscPress = function (evt) {
     if (evt.keyCode === KEYCODE_ESC) {
@@ -40,4 +41,10 @@
     closePopup();
   });
 
+  form.addEventListener('submit', function (evt) {
+    window.save(new FormData(form), function (response) {
+      window.popUp.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
